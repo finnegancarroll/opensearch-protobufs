@@ -1,4 +1,4 @@
-# docker build --platform=linux/amd64 -t bazel-5.4.1 .
+# docker build --no-cache --platform=linux/amd64 -t bazel-5.4.1 .
 # docker run --platform=linux/amd64 -it bazel-5.4.1 bash
 
 FROM ubuntu:22.04 AS base-bazel
@@ -31,4 +31,4 @@ WORKDIR /build
 # Copy entire repository for convenience
 COPY . .
 
-RUN bazel build //...
+# RUN bazel build //...
