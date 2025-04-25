@@ -1,8 +1,12 @@
 workspace(name = "proto_workspace")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+ 
+"""
+Protoc compiler - 3.25.5 and associated C dependencies.
+Depends on language specific rules.
+"""
 
-# Protocol Buffers dependencies
 http_archive(
     name = "com_google_protobuf",
     sha256 = "4356e78744dfb2df3890282386c8568c85868116317d9b3ad80eb11c2aecf2ff",
@@ -14,7 +18,13 @@ load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 
 protobuf_deps()
 
-# Java rules
+"""
+Language rules.
+Includes libraries required for compilation/linking compiled protos.
+Includes language specfic platoform support (JMV, python interpreter). 
+"""
+
+# Java
 http_archive(
     name = "rules_java",
     sha256 = "f8ae9ed3887df02f40de9f4f7ac3873e6dd7a471f9cddf63952538b94b59aeb3",
@@ -23,8 +33,13 @@ http_archive(
     ],
 )
 
-# load("@rules_java//java:repositories.bzl", "rules_java_dependencies")
-# rules_java_dependencies()
+# Python
+http_archive(
+    name = "rules_python",
+    sha256 = "4f7e2aa1eb9aa722d96498f5ef514f426c1f55161c3c9ae628c857a7128ceb07",
+    strip_prefix = "rules_python-1.0.0",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/1.0.0/rules_python-1.0.0.tar.gz",
+)
 
 # Proto rules
 http_archive(
@@ -40,7 +55,12 @@ rules_proto_dependencies()
 
 rules_proto_toolchains()
 
-# gRPC dependencies
+"""
+Service definitions need additional gRPC dependencies.
+Defined for each language. 
+"""
+
+# Java
 http_archive(
     name = "io_grpc_grpc_java",
     sha256 = "dc1ad2272c1442075c59116ec468a7227d0612350c44401237facd35aab15732",
@@ -51,6 +71,23 @@ http_archive(
 load("@io_grpc_grpc_java//:repositories.bzl", "IO_GRPC_GRPC_JAVA_ARTIFACTS", "IO_GRPC_GRPC_JAVA_OVERRIDE_TARGETS", "grpc_java_repositories")
 
 grpc_java_repositories()
+
+# Python
+http_archive(
+    name = "com_github_grpc_grpc",
+    strip_prefix = "grpc-1.54.0",
+    urls = ["https://github.com/grpc/grpc/archive/v1.54.0.tar.gz"],
+    sha256 = "5e53505a6c84030a26c4fddd71b3f46feec8e0a8eccff2a903b189d349ca6ff5",
+)
+
+load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
+grpc_deps()
+
+load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
+grpc_extra_deps()
+
+load("@com_github_grpc_grpc//bazel:grpc_python_deps.bzl", "grpc_python_deps")
+grpc_python_deps()
 
 # Use rules_jvm_external to manage Maven dependencies
 http_archive(
