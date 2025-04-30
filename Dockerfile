@@ -31,9 +31,15 @@ RUN bazel --version
 
 FROM base-bazel AS build-java
 
+# Create non-root user for bazel build
+RUN useradd -m -s /bin/bash bazel \
+    && mkdir -p /build \
+    && chown -R bazel:bazel /build
+
 WORKDIR /build
 
-# Copy entire repository for convenience
-COPY . .
+COPY --chown=bazel:bazel . .
+
+USER bazel
 
 # RUN bazel build //...
