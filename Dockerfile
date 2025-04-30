@@ -15,8 +15,13 @@ RUN apt-get update && apt-get install -y \
     python3 \
     g++ \
     gcc \
+    software-properties-common \
     && apt-get clean
     
+RUN add-apt-repository ppa:deadsnakes/ppa -y
+RUN apt-get update
+RUN apt-get install python3.10 python3-dev -y
+
 RUN curl -fsSL https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh -o bazel-installer.sh \
     && chmod +x bazel-installer.sh \
     && ./bazel-installer.sh \
