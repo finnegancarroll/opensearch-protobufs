@@ -52,13 +52,11 @@ Python service libraries
 py_proto_library(
     name = "document_service_proto_py",
     deps = [":document_service_proto"],
-    use_grpc_plugin = False,
 )
 
 py_proto_library(
     name = "search_service_proto_py",
     deps = [":search_service_proto"],
-    use_grpc_plugin = False,
 )
 
 py_grpc_library(

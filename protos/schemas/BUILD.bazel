@@ -55,17 +55,14 @@ Python schema libraries
 py_proto_library(
     name = "common_proto_py",
     deps = [":common_proto"],
-    use_grpc_plugin = False,
 )
 
 py_proto_library(
     name = "document_proto_py",
     deps = [":document_proto"],
-    use_grpc_plugin = False,
 )
 
 py_proto_library(
     name = "search_proto_py",
     deps = [":search_proto"],
-    use_grpc_plugin = False,
 )
