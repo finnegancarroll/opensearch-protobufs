@@ -47,6 +47,21 @@ rules_proto_dependencies()
 
 rules_proto_toolchains()
 
+# Add googleapis with Python support
+http_archive(
+    name = "com_google_googleapis",
+    sha256 = "9d1a930e767c93c825398b8f8692eca3fe353b9aaadedfbcf1fca2282c85df88",
+    strip_prefix = "googleapis-64926d52febbf298cb82a8f472ade4a3969ba922",
+    urls = ["https://github.com/googleapis/googleapis/archive/64926d52febbf298cb82a8f472ade4a3969ba922.zip"],
+)
+
+load("@com_google_googleapis//:repository_rules.bzl", "switched_rules_by_language")
+
+switched_rules_by_language(
+    name = "com_google_googleapis_imports",
+    python = True,  # Enable Python-specific rules
+)
+
 
 """
 Service definitions need additional gRPC dependencies.
@@ -124,11 +139,11 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = IO_GRPC_GRPC_JAVA_ARTIFACTS + [
-        "io.netty:netty-handler:4.1.118.Final",
+        "io.netty:netty-handler:4.1.110.Final",  # Use consistent version
         "commons-codec:commons-codec:1.13",
         "org.jetbrains.kotlin:kotlin-stdlib:1.6.0",
         "com.google.protobuf:protobuf-java:3.25.5",
-        "com.squareup.okio:okio:3.4.0",
+        "com.squareup.okio:okio:2.10.0",  # Use consistent version
     ],
     generate_compat_repositories = True,
     override_targets = IO_GRPC_GRPC_JAVA_OVERRIDE_TARGETS,
