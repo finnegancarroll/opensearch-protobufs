@@ -4,7 +4,7 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
  
 """
 Protoc compiler - 3.25.5 and associated C dependencies.
-Depends on language specific rules.
+Includes native support for language specific rules.
 """
 
 http_archive(
@@ -33,14 +33,6 @@ http_archive(
     ],
 )
 
-# Python
-http_archive(
-    name = "rules_python",
-    sha256 = "4f7e2aa1eb9aa722d96498f5ef514f426c1f55161c3c9ae628c857a7128ceb07",
-    strip_prefix = "rules_python-1.0.0",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/1.0.0/rules_python-1.0.0.tar.gz",
-)
-
 # Proto rules
 http_archive(
     name = "rules_proto",
@@ -54,6 +46,12 @@ load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_
 rules_proto_dependencies()
 
 rules_proto_toolchains()
+
+# Python - We will use the native 
+# bind(
+#     name = "protobuf_python",
+#     actual = "@com_google_protobuf//:protobuf_python",
+# )
 
 """
 Service definitions need additional gRPC dependencies.
