@@ -62,6 +62,12 @@ switched_rules_by_language(
     python = True,  # Enable Python-specific rules
 )
 
+# Add well-known protos
+bind(
+    name = "python/well_known_protos",
+    actual = "@com_google_protobuf//:well_known_protos",
+)
+
 
 """
 Service definitions need additional gRPC dependencies.
