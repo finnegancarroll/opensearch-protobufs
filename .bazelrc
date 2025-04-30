@@ -2,6 +2,10 @@
 build --proto_compiler=@com_google_protobuf//:protoc
 build --protocopt=--experimental_allow_proto3_optional
 
+# Python protobuf settings
+build --python_path=python3
+build --define=use_fast_cpp_protos=true
+
 # Set C++ standard to C++14
 build --cxxopt=-std=c++14
 build --host_cxxopt=-std=c++14
