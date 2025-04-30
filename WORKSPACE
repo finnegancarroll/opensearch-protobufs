@@ -47,12 +47,6 @@ rules_proto_dependencies()
 
 rules_proto_toolchains()
 
-# Python - We will use the native 
-# bind(
-#     name = "protobuf_python",
-#     actual = "@com_google_protobuf//:protobuf_python",
-# )
-
 """
 Service definitions need additional gRPC dependencies.
 Defined for each language. 
