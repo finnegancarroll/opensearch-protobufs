@@ -482,7 +482,7 @@ message UpdateDocumentRequest {
   // [optional] Name of the data stream or index to target. If the target doesn't exist and matches the name or wildcard (`*`) pattern of an index template with a `data_stream` definition, this request creates the data stream. If the target doesn't exist and doesn't match a data stream template, this request creates the index.
   optional string index = 2;
   // [optional] Set to false to disable source retrieval. You can also specify a comma-separated list of the fields you want to retrieve.
-  optional SourceConfigParam source = 3 [json_name = "_source"];
+  optional SourceConfigParam source = 3;
   // [optional] A comma-separated list of source fields to exclude from the response.
   repeated string source_excludes = 4 [json_name = "_source_excludes"];
   // [optional] A comma-separated list of source fields to include in the response.
@@ -538,7 +538,7 @@ message UpdateDocumentRequestBody {
   //[optional] Set to true to execute the script whether or not the document exists.
   optional bool scripted_upsert = 5;
   // [optional] Defines how to fetch a source. Fetching can be disabled entirely, or the source can be filtered.
-  optional SourceConfig source = 6 [json_name = "_source"];
+  optional SourceConfig source = 6;
 
   // [optional] If the document does not already exist, the contents of 'upsert' are inserted as a new document. If the document exists, the 'script' is executed.
   // Provide document either as ObjectMap or bytes
@@ -595,7 +595,7 @@ message GetDocumentRequest {
   // [required] Name of the data stream or index to target. If the target doesn't exist and matches the name or wildcard (`*`) pattern of an index template with a `data_stream` definition, this request creates the data stream. If the target doesn't exist and doesn't match a data stream template, this request creates the index.
   string index = 2;
   // [optional] Set to false to disable source retrieval. You can also specify a comma-separated list of the fields you want to retrieve. Default is true.
-  optional SourceConfigParam source = 3 [json_name = "_source"];
+  optional SourceConfigParam source = 3;
   // [optional] A comma-separated list of source fields to exclude from the response.
   repeated string source_excludes = 4 [json_name = "_source_excludes"];
   // [optional] A comma-separated list of source fields to include in the response.
@@ -646,7 +646,7 @@ message GetDocumentResponseBody {
     // struct_source field to be returned upon explicit request by user
     .google.protobuf.Struct struct_source = 9;
     // Use bytes for better latency/performance, as it reduces payload size over the wire
-    bytes source = 11 [json_name = "_source"];
+    bytes source = 11;
 
   }
   // [optional] The document's version number. Updated whenever the document changes.
