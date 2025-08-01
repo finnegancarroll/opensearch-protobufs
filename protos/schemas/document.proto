@@ -391,7 +391,7 @@ enum Result {
 
 message IndexDocumentResponseBody {
   // [optional] The document type.
-  optional string type = 1 [json_name = "_type"];
+  optional string type = 1;
   // [optional] The document's ID.
   optional string id = 2 [json_name = "_id"];
   // [optional] The name of the index.
@@ -440,7 +440,7 @@ message DeleteDocumentRequest {
 
 message DeleteDocumentResponseBody {
   // [optional] The document type.
-  optional string type = 1 [json_name = "_type"];
+  optional string type = 1;
   // [optional] The document's ID.
   optional string id = 2 [json_name = "_id"];
   // [optional] The name of the index.
@@ -567,7 +567,7 @@ message UpdateDocumentErrorResponse {
 
 message UpdateDocumentResponseBody {
   // [optional] The document type.
-  optional string type = 1 [json_name = "_type"];
+  optional string type = 1;
   // [optional] The document's ID.
   optional string id = 2 [json_name = "_id"];
   // [optional] The name of the index.
@@ -624,7 +624,7 @@ message GetDocumentRequest {
 
 message GetDocumentResponseBody {
   // [optional] The document type.
-  optional string type = 1 [json_name = "_type"];
+  optional string type = 1;
   // [optional] The name of the index.
   optional string index = 2 [json_name = "_index"];
   // [optional] Contains the document's data that's stored in the index. Only returned if both stored_fields and found are true.
