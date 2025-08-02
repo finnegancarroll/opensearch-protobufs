@@ -406,7 +406,7 @@ message IndexDocumentResponseBody {
   // [optional] Detailed information about the cluster's shards.
   ShardStatistics shards = 7 [json_name = "_shards"];
   // [optional] The document's version.
-  optional int64 version = 8 [json_name = "_version"];
+  optional int64 version = 8;
   // [optional] if `true`, it requires immediate visibility of the document
   optional bool forced_refresh = 9;
 }
@@ -454,7 +454,7 @@ message DeleteDocumentResponseBody {
   // [optional] Detailed information about the cluster's shards.
   ShardStatistics shards = 7 [json_name = "_shards"];
   // [optional] The document's version.
-  optional int64 version = 8 [json_name = "_version"];
+  optional int64 version = 8;
   // [optional] if `true`, it requires immediate visibility of the document
   optional bool forced_refresh = 9;
 
@@ -581,7 +581,7 @@ message UpdateDocumentResponseBody {
   // [optional] Detailed information about the cluster's shards.
   optional ShardStatistics shards = 7 [json_name = "_shards"];
   // [optional] The document's version.
-  optional int64 version = 8 [json_name = "_version"];
+  optional int64 version = 8;
   // [optional] if `true`, it requires immediate visibility of the document
   optional bool forced_refresh = 9;
   // [optional]
@@ -650,7 +650,7 @@ message GetDocumentResponseBody {
 
   }
   // [optional] The document's version number. Updated whenever the document changes.
-  optional int64 version = 10 [json_name = "_version"];
+  optional int64 version = 10;
 }
 
 // The response from get document request with document ID specified request
