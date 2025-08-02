@@ -404,7 +404,7 @@ message IndexDocumentResponseBody {
   // [optional] The sequence number assigned when the document was indexed.
   optional int64 seq_no = 6;
   // [optional] Detailed information about the cluster's shards.
-  ShardStatistics shards = 7 [json_name = "_shards"];
+  ShardStatistics shards = 7;
   // [optional] The document's version.
   optional int64 version = 8;
   // [optional] if `true`, it requires immediate visibility of the document
@@ -452,7 +452,7 @@ message DeleteDocumentResponseBody {
   // [optional] The sequence number assigned when the document was indexed.
   optional int64 seq_no = 6;
   // [optional] Detailed information about the cluster's shards.
-  ShardStatistics shards = 7 [json_name = "_shards"];
+  ShardStatistics shards = 7;
   // [optional] The document's version.
   optional int64 version = 8;
   // [optional] if `true`, it requires immediate visibility of the document
@@ -484,9 +484,9 @@ message UpdateDocumentRequest {
   // [optional] Set to false to disable source retrieval. You can also specify a comma-separated list of the fields you want to retrieve.
   optional SourceConfigParam source = 3;
   // [optional] A comma-separated list of source fields to exclude from the response.
-  repeated string source_excludes = 4 [json_name = "_source_excludes"];
+  repeated string source_excludes = 4;
   // [optional] A comma-separated list of source fields to include in the response.
-  repeated string source_includes = 5 [json_name = "_source_includes"];
+  repeated string source_includes = 5;
   // [optional] Only perform the operation if the document has this primary term.
   optional int64 if_primary_term = 6;
   // [optional] Only perform the operation if the document has this sequence number.
@@ -579,7 +579,7 @@ message UpdateDocumentResponseBody {
   // [optional] The sequence number assigned when the document was indexed.
   optional int64 seq_no = 6;
   // [optional] Detailed information about the cluster's shards.
-  optional ShardStatistics shards = 7 [json_name = "_shards"];
+  optional ShardStatistics shards = 7;
   // [optional] The document's version.
   optional int64 version = 8;
   // [optional] if `true`, it requires immediate visibility of the document
@@ -597,9 +597,9 @@ message GetDocumentRequest {
   // [optional] Set to false to disable source retrieval. You can also specify a comma-separated list of the fields you want to retrieve. Default is true.
   optional SourceConfigParam source = 3;
   // [optional] A comma-separated list of source fields to exclude from the response.
-  repeated string source_excludes = 4 [json_name = "_source_excludes"];
+  repeated string source_excludes = 4;
   // [optional] A comma-separated list of source fields to include in the response.
-  repeated string source_includes = 5 [json_name = "_source_includes"];
+  repeated string source_includes = 5;
   // [optional] Specifies a preference of which shard to retrieve results from. Available options are _local, which tells the operation to retrieve results from a locally allocated shard replica, and a custom string value assigned to a specific shard replica. By default, OpenSearch executes get document operations on random shards.
   optional string preference = 6;
   // [optional] Specifies whether the operation should run in realtime. If false, the operation waits for the index to refresh to analyze the source to retrieve data, which makes the operation near-realtime. Default is true.
