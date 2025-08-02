@@ -636,7 +636,7 @@ message GetDocumentResponseBody {
   // [optional] The primary term assigned when the document is indexed.
   optional int64 primary_term = 6;
   // [optional] The shard that the document is routed to. If the document is not routed to a particular shard, this field is omitted.
-  optional string routing = 7 [json_name = "_routing"];
+  optional string routing = 7;
   // [optional] The sequence number assigned when the document was indexed.
   optional int64 seq_no = 8;
   // [optional] Contains the document's data if found is true. If _source is set to false or stored_fields is set to true in the URL parameters, this field is omitted.

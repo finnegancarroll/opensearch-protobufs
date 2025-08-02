@@ -2640,7 +2640,7 @@ message InlineGet {
 
   int64 primary_term = 4;
 
-  repeated string routing = 5 [json_name = "_routing"];
+  repeated string routing = 5;
 
   oneof inline_get_source {
 
