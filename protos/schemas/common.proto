@@ -2636,7 +2636,7 @@ message InlineGet {
 
   bool found = 2;
 
-  int64 seq_no = 3 [json_name = "_seq_no"];
+  int64 seq_no = 3;
 
   int64 primary_term = 4;
 
