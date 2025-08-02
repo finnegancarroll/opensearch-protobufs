@@ -393,9 +393,9 @@ message IndexDocumentResponseBody {
   // [optional] The document type.
   optional string type = 1;
   // [optional] The document's ID.
-  optional string id = 2 [json_name = "_id"];
+  optional string id = 2;
   // [optional] The name of the index.
-  optional string index = 3 [json_name = "_index"];
+  optional string index = 3;
   // [optional] The primary term assigned when the document was indexed.
   optional int64 primary_term = 4 [json_name = "_primary_term"];
 
@@ -442,9 +442,9 @@ message DeleteDocumentResponseBody {
   // [optional] The document type.
   optional string type = 1;
   // [optional] The document's ID.
-  optional string id = 2 [json_name = "_id"];
+  optional string id = 2;
   // [optional] The name of the index.
-  optional string index = 3 [json_name = "_index"];
+  optional string index = 3;
   // [optional] The primary term assigned when the document was indexed.
   optional int64 primary_term = 4 [json_name = "_primary_term"];
   // [optional] The result of the index operation.
@@ -569,9 +569,9 @@ message UpdateDocumentResponseBody {
   // [optional] The document type.
   optional string type = 1;
   // [optional] The document's ID.
-  optional string id = 2 [json_name = "_id"];
+  optional string id = 2;
   // [optional] The name of the index.
-  optional string index = 3 [json_name = "_index"];
+  optional string index = 3;
   // [optional] The primary term assigned when the document was indexed.
   optional int64 primary_term = 4 [json_name = "_primary_term"];
   // [optional] The result of the index operation.
@@ -626,13 +626,13 @@ message GetDocumentResponseBody {
   // [optional] The document type.
   optional string type = 1;
   // [optional] The name of the index.
-  optional string index = 2 [json_name = "_index"];
+  optional string index = 2;
   // [optional] Contains the document's data that's stored in the index. Only returned if both stored_fields and found are true.
   ObjectMap fields = 3;
   // [optional] Whether the document exists.
   optional bool found = 4;
   // [optional] The document's ID.
-  optional string id = 5 [json_name = "_id"];
+  optional string id = 5;
   // [optional] The primary term assigned when the document is indexed.
   optional int64 primary_term = 6 [json_name = "_primary_term"];
   // [optional] The shard that the document is routed to. If the document is not routed to a particular shard, this field is omitted.
