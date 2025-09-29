@@ -807,7 +807,6 @@ message FetchProfile {
 
 }
 
-
 message FetchProfileBreakdown {
 
   optional int32 load_stored_fields = 1;
@@ -935,19 +934,24 @@ message AggregationContainer {
 }
 
 message CardinalityAggregation {
+  // The custom metadata attached to a resource.
+  optional ObjectMap meta = 1;
+
+  optional string name = 2;
+
   // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
-  optional string field = 1;
+  optional string field = 3;
 
-  optional FieldValue missing = 2;
+  optional FieldValue missing = 4;
 
-  optional Script script = 3;
+  optional Script script = 5;
 
   // A unique count below which counts are expected to be close to accurate. This allows to trade memory for accuracy.
-  optional int32 precision_threshold = 4;
+  optional int32 precision_threshold = 6;
 
-  optional bool rehash = 5;
+  optional bool rehash = 7;
 
-  optional CardinalityExecutionMode execution_hint = 6;
+  optional CardinalityExecutionMode execution_hint = 8;
 }
 
 enum CardinalityExecutionMode {
