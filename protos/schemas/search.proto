@@ -925,9 +925,6 @@ message AggregationContainer {
   // Sub-aggregations for this aggregation. Only applies to bucket aggregations.
   map<string, AggregationContainer> aggs = 2;
 
-  // The custom metadata attached to a resource.
-  optional ObjectMap meta = 3;
-
   CardinalityAggregation cardinality = 12;
 
   MissingAggregation missing = 39;
